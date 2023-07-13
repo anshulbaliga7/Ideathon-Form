@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/script/formdisplay.css' %}">
+
+    <!-- Bootstrap core CSS -->
+</head>
+
+<body>
+
+    <div>
+        <h1>Submitted Form Data</h1>
+        <h2>Form Details (Personal info)</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for field, value in form_data.items %}
+                <tr>
+                    <td>{{ field }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Member Details</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Member Name</th>
+                    <th>Contact Number</th>
+                    <th>Email</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Role</th>
+                    <th>Core Competency</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in member_data %}
+                <tr>
+                    <td>{{ member.MemberName }}</td>
+                    <td>{{ member.Contactnumber }}</td>
+                    <td>{{ member.Email }}</td>
+                    <td>{{ member.DateofBirth }}</td>
+                    <td>{{ member.Gender }}</td>
+                    <td>{{ member.Department }}</td>
+                    <td>{{ member.Role }}</td>
+                    <td>{{ member.Competency }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <a href="{% url 'submit_form_login' %}">Go back to login page.</a>
+    </div>
+</body>
+
+</html>

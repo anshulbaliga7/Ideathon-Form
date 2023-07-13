@@ -1,0 +1,30 @@
+body {
+    background-color: palegoldenrod;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+h1{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+
+}
+
+table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+th, td {
+    border: 2px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: lightgray;
+}

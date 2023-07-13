@@ -1,0 +1,224 @@
+/* CSS Mini Reset */
+html,
+body,
+div,
+form,
+fieldset,
+legend,
+label {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th, td {
+  border: 1px solid black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th,
+td,
+caption {
+  font-weight: normal;
+}
+img {
+  border: 0;
+}
+
+@keyframes color {
+  0% {
+    background: #33cccc;
+  }
+  20% {
+    background: #ff00ff;
+  }
+  40% {
+    background: #b8cc33;
+  }
+  60% {
+    background: #fcca00;
+  }
+  80% {
+    background: #33cc36;
+  }
+  100% {
+    background: #33cccc;
+  }
+}
+head,
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  background: #33cccc; /* Fallback */
+  animation: color 9s infinite linear;
+}
+div {
+  margin-bottom: 30px;
+}
+label {
+  display: inline-block;
+  width: 240px;
+  text-align: left;
+}
+#personalinfo-gender {
+  width: 115px;
+}
+#header-title {
+  font-size: 30px;
+  height: auto;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 5%;
+  clear: both;
+  text-align: left; 
+  width: 25%; 
+  display: inline-block;
+}
+#header-title-two {
+  font-size: 30px;
+  height: auto;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 5%;
+  clear: both;
+  text-align: right; 
+  width:40%; 
+  display: inline-block;
+}
+#personalinfo-header {
+  background-color: gray;
+  font-size: 30px;
+  clear: both;
+}
+#personalinfo-para{
+  border-width: 3px; border-style: solid; border-color: orange; color: black;
+}
+#projectinfo {
+  background-color: gray;
+  font-size: 30px;
+}
+#projectinfo-para{
+  border-width: 3px; border-style: solid; border-color: orange; color: black;
+}
+#teaminfo {
+  background-color: gray;
+  font-size: 30px;
+}
+#teaminfo-para{
+  border-width: 3px; border-style: solid; border-color: orange; color: black;
+}
+#tandcinfo {
+  background-color: gray;
+  font-size: 30px;
+}
+#tandcinfo-para{
+  border-width: 3px; border-style: solid; border-color: orange; color: black;
+}
+#terms-and-conditions {
+  font-size: 15px;
+  color: red;
+  display: inline;
+}
+
+#members-forms {
+  background-color: gray;
+  text-align: center;
+  height: 21px;
+  margin: 10px;
+  border: 3px gray;
+  border-style: solid;
+  width: 480px;
+}
+select {text-align:center; }
+#productname{
+  width: 200px;
+}
+textarea {
+  width: 950px;
+  height: 30px;
+}
+#tsip-image {
+  width: 150px;
+  height: 50px;
+}
+#final-submit-button {
+  padding: 4px 50px;
+  color: yellow;
+  background-color: purple;
+}
+#submitbutton-disp{
+  display: inline-block;
+}
+#final-clear-button {
+  float: inherit;
+  padding: 4px 30px;
+  color: yellow;
+  background-color: purple;
+}
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 120%; 
+  overflow: auto;
+  background-color: rgb(0, 0, 0); 
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  background-color: pink;
+  margin: 7% auto; 
+  padding: 50px;
+  border: 1px solid #888;
+  width: 70%; 
+}
+.close {
+  color: blue;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: brown;
+  text-decoration: solid;
+  cursor: pointer;
+}
+
+#downarrowbtn1{
+  float: right;
+}
+#downarrowbtn2{
+  float: right;
+}
+#downarrowbtn3{
+  float: right;
+}
+#uparrowbtn1{
+  float: right;
+}
+#uparrowbtn2{
+  float: right;
+}
+#uparrowbtn3{
+  float: right;
+}
+#modalbtn{
+  color: yellow;
+  background-color: purple;
+}

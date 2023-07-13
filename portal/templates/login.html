@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    {% load static %}
+    <script src="{% static '/script/scripts.js' %}"></script>
+    <link rel="stylesheet" href="{% static '/script/stylesy.css' %}">
+
+    <title>TSIP Application Form</title>
+    &nbsp;
+    <p id="header-title"><b>Ideathon</b></p>
+    <img align="middle" src="{% static '/images/tsip.png' %}" id="tsip-image" alt="tsip" />
+    <p id="header-title-two"><b>Toshiba Software India Pvt. Ltd.</b>
+    </p>
+</head>
+
+<body>
+    <div id="personalinfo-header">
+        <p id="personalinfo-para"><b>Personal Information</b>
+            <input type="button" id="downarrowbtn1" onclick="clicky1()" value="↓" />
+            <input type="button" id="uparrowbtn1" onclick="clicky()" value="↑" />
+        </p>
+    </div>
+
+    <form action="submission" method="post" id="ideathon-form">
+        <section id="personalinfo-section">
+            {% csrf_token %}
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="hidden" name="id" id="main_form_id_input" title="ID" value="{{ unique_id }}">
+                <input type="hidden" name="project_id" id="project_id_input" value="{{ unique_id }}">
+
+            </div>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b><label>Name</label></b>
+                <input type="text" size="100" name="namee" placeholder="Enter your name" required>
+            </div>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b><label>Contact Number (10 digits)</label></b>
+                <input type="text" size="100" id="personalinfo-contacts" name="contacts" oninput="validateContacts(event)" pattern="[0-9]{10}" maxlength="10" placeholder="Enter a 10 digit contact number" required>
+            </div>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b><label>Email</label></b>
+                <input type="email" size="100" name="emails" placeholder="Enter your E-mail" required>
+            </div>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b><label>Date of Birth</label></b>
+                <input type="date" size="100" placeholder="DD/MM/YY" name="dobs" required>
+            </div>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b><label>Gender</label></b>
+                <select name="gen" id="personalinfo-gender" title="Gender details" required>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="NA">Prefer not to say</option>
+                </select>
+            </div>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b><label>Which Toshiba department do you belong to?</label></b>
+                <input type="text" size="100" name="dept" placeholder="Enter your department" required>
+            </div>
+        </section>
+        <br>
+
+        <div id="projectinfo">
+            <p id="projectinfo-para"><b>About your idea/project</b>
+                <input type="button" id="downarrowbtn2" onclick="clicky3()" value="↓" />
+                <input type="button" id="uparrowbtn2" onclick="clicky2()" value="↑" />
+            </p>
+        </div>
+        <section id="aboutidea-section">
+            {% csrf_token %}
+            <ol>
+                <li>
+                    <p><b>Name of your Project/Product/Idea:</p></b>
+                    <input type="text" size="100" data-component="textbox" name="ideaname" minlength="10" placeholder="Project Name" required>
+                </li>
+                <li>
+                    <p><b>What is the pain point that you are addressing ? (i.e WHY did you decide to do this project?)</b></p>
+                    <textarea size="120" data-component="textbox" name="painp" placeholder="Enter text here" required></textarea>
+                </li>
+                <li>
+                    <p><b>What is your solution and how will it solve the pain point?</b></p>
+                    <textarea size="100" data-component="textbox" name="solnp" placeholder="Enter text here" required></textarea>
+                </li>
+                <li>
+                    <p><b>What's new/unique/innovative about what you're making?</b></p>
+                    <textarea size="100" data-component="textbox" name="innovm" placeholder="Enter text here" required></textarea>
+                </li>
+                <li>
+                    <p><b>Describe your product's features and it's functionality.</b></p>
+                    <textarea size="100" data-component="textbox" name="prodf" placeholder="Enter text here" required></textarea>
+                </li>
+                <li>
+                    <p><b>Who will be your customer?</b></p>
+                    <textarea size="100" data-component="textbox" name="custo" placeholder="Enter text here" required></textarea>
+                </li>
+                <li>
+                    <p><b>Are similiar products/solutions already available? If yes, name them and tell us how will your idea/product be different than their's.</b></p>
+                    <textarea size="100" data-component="textbox" name="availp" placeholder="Enter text here" required></textarea>
+                </li>
+                <li>
+                    <p><b>How can your idea be converted to a business? (What is your vision?)</b></p>
+                    <textarea size="100" data-component="textbox" name="busic" placeholder="Enter text here" required></textarea>
+                </li>
+                <li>
+                    <p><b>Name of your Project/Product/Idea:</b>
+                    <select name="prodname" id="productname" onchange="specifyhidden(value);" title="Product Domain" required>
+                        <option value="1">Software - Front End</option>
+                        <option value="2">Software - BackEnd</option>
+                        <option value="3">Software - AI/ML</option>
+                        <option value="4">Software - Data Analytics</option>
+                        <option value="5">Software - AR</option>
+                        <option value="6">Software - VR</option>
+                        <option value="7">Software - XR</option>
+                        <option value="8">Software - Blockchain/Distributed Ledger</option>
+                        <option value="9">Software - Fintech</option>
+                        <option value="10">Other</option>
+                    </select>
+                    </p>
+                </li>
+            </ol>
+            <div id="specifyhide" hidden>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                If others specify:
+                <input type="text" size="60" data-component="textbox" placeholder="Enter text here" name="spe" required>
+            </div>
+            <br>
+        </section>
+
+        <div id="teaminfo">
+            <p id="teaminfo-para"><b>Team Details</b>
+                <input type="button" id="downarrowbtn3" onclick="clicky5()" value="↓" />
+                <input type="button" id="uparrowbtn3" onclick="clicky4()" value="↑" />
+            </p>
+        </div>
+
+        <section id="team-details-section" class="d-flex align-items-center">
+            {% csrf_token %}
+            <ol>
+                <li>
+                    <p><b>Name of your team members (Including you)</p></b>
+                    <input type="text" size="100" data-component="textbox" name="businessidea" placeholder="Enter text here" required>
+                </li>
+            </ol>
+
+            <ol>
+                <li style="list-style: none;"></li>
+                <li>
+                    <p><b>Team member details (Fill in the details for each of your team member)</b></p>
+                    <button type="button" id="modalbtn" onclick="displaymodal()">Click for entering details</button>
+                </li>
+            </ol>
+
+            <!-- modal for member entry -->
+            <div id="member-details-modal" class="modal">
+                <div class="modal-content">
+                    <form method="post" action="/save-member-details/">
+                        {% csrf_token %}
+                        <span onclick="closefunc()" class="close">&times;</span>
+                        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                        <div id="members-forms">Member Details</div>
+
+                        <input type="hidden" name="id" id="member_id_input">
+                        <input type="hidden" name="project_id" id="modal_project_id_input">
+
+                        &nbsp;&nbsp;&nbsp;<label>Name</label>
+                        <input type="text" size=" 25" data-component="textbox" name="memnameone" placeholder="Enter your name" required><br>
+
+                        &nbsp;&nbsp;&nbsp;<label>Contact Number</label>
+                        <input type="text" size=" 25" id="memberdetails-contacts" data-component="textbox" name="memcontone" oninput="validateContacts(event)" placeholder="Enter a 10 digit contact number" maxlength="10" pattern="[0-9]{10}" required><br>
+
+                        &nbsp;&nbsp;&nbsp;<label>Email</label>
+                        <input type="text" size=" 25" data-component="textbox" name="memmailone" placeholder="Enter your E-mail" required><br>
+
+                        &nbsp;&nbsp;&nbsp;<label>Date of Birth</label>
+                        <input type="date" size=" 25" data-component="textbox" placeholder="DD/MM/YY" name="memdobone" required><br>
+
+                        &nbsp;&nbsp;&nbsp;<label>Gender</label>
+                        <select name="memgenone" id="gender-form-memberone" title="Gender details for members" required>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                            <option value="NA">Prefer not to say</option>
+                        </select><br>
+
+                        &nbsp;&nbsp;&nbsp;<label>TSIP department</label>
+                        <input type="text" size=" 25" data-component="textbox" name="memdeptone" placeholder="Enter your department" required><br>
+
+                        &nbsp;&nbsp;&nbsp;<label>Role in the team</label>
+                        <input type="text" size=" 25" data-component="textbox" name="memroleone" placeholder="Enter your role" required><br>
+
+                        &nbsp;&nbsp;&nbsp;<label>Core Competency</label>
+                        <input type="text" size=" 25" data-component="textbox" name="memcoreone" placeholder="Enter text here" required><br>
+                        <input type="submit" onclick="submitmemberdetails()" value="Save" id="form-one">
+                    </form>
+                </div>
+            </div>
+            <table id="member-table" hidden>
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Name</th>
+                        <th>Contact Number</th>
+                        <th>Email</th>
+                        <th>Date of Birth</th>
+                        <th>Gender</th>
+                        <th>TSIP Department</th>
+                        <th>Role in the Team</th>
+                        <th>Core Competency</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </section>
+    </form>
+
+    <div id="tandcinfo">
+        <p id="tandcinfo-para"><b>Acceptance of Terms and Conditions</b></p>
+    </div>
+
+    <input type="checkbox" name="checkbkx" id="mycheck" title="Check me" onclick="myfunc()">
+   <strong><label id="terms-and-conditions">
+        Terms and conditions of the competitions to be entered here by TSIP core team
+    </label></strong>
+    <br><br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div id="submitbutton-disp">
+        <button type="button" onclick="submitfunction()" value="Save" id="final-submit-button">Submit</button>
+        &nbsp;<span id="datee"></span>
+    </div>
+
+    <button type="button" onclick="clearfunction()" id="final-clear-button">Clear the form</button>
+    <button type="button" onclick="window.location.href='/signout'" id="final-clear-button">Sign out</button>
+
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        Submitted by (Team lead)
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;Date & Time: <span id="date-span"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="time-span"></span>
+    </p>
+
+    <script>
+        const date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        var time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        let currentDate = `${day}-${month}-${year}`;
+        document.getElementById("date-span").innerHTML = currentDate;
+        document.getElementById("time-span").innerHTML = time;
+    </script>
+</body>
+</html>
