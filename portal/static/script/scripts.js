@@ -185,6 +185,29 @@ function validateContacts(event) {
   input.value = limitedValue;
 }
 
+function uploadDocument() {
+  // Get the selected file from the input element
+  const fileInput = document.getElementById('document-upload');
+  const file = fileInput.files[0];
+
+  // Create a FormData object to send the file to the backend
+  const formData = new FormData();
+  formData.append('document', file);
+
+  // Send the file to the backend using AJAX
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'upload-document/', true);
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      // Document uploaded successfully
+      alert('Document uploaded successfully!');
+    } else {
+      // Error occurred during upload
+      alert('Error uploading document.');
+    }
+  };
+  xhr.send(formData);
+}
 
 
 
