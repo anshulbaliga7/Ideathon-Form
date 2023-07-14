@@ -6,6 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     {% load static %}
     <script src="{% static '/script/scripts.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="{% static '/script/stylesy.css' %}">
 
     <title>TSIP Application Form</title>
@@ -41,7 +42,9 @@
             <div>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <b><label>Contact Number (10 digits)</label></b>
-                <input type="text" size="100" id="personalinfo-contacts" name="contacts" oninput="validateContacts(event)" pattern="[0-9]{10}" maxlength="10" placeholder="Enter a 10 digit contact number" required>
+                <input type="text" size="100" id="personalinfo-contacts" name="contacts"
+                    oninput="validateContacts(event)" pattern="[0-9]{10}" maxlength="10"
+                    placeholder="Enter a 10 digit contact number" required>
             </div>
             <div>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -81,50 +84,61 @@
             <ol>
                 <li>
                     <p><b>Name of your Project/Product/Idea:</p></b>
-                    <input type="text" size="100" data-component="textbox" name="ideaname" minlength="10" placeholder="Project Name" required>
+                    <input type="text" size="100" data-component="textbox" name="ideaname" minlength="10"
+                        placeholder="Project Name" required>
                 </li>
                 <li>
-                    <p><b>What is the pain point that you are addressing ? (i.e WHY did you decide to do this project?)</b></p>
-                    <textarea size="120" data-component="textbox" name="painp" placeholder="Enter text here" required></textarea>
+                    <p><b>What is the pain point that you are addressing ? (i.e WHY did you decide to do this
+                            project?)</b></p>
+                    <textarea size="120" data-component="textbox" name="painp" placeholder="Enter text here"
+                        required></textarea>
                 </li>
                 <li>
                     <p><b>What is your solution and how will it solve the pain point?</b></p>
-                    <textarea size="100" data-component="textbox" name="solnp" placeholder="Enter text here" required></textarea>
+                    <textarea size="100" data-component="textbox" name="solnp" placeholder="Enter text here"
+                        required></textarea>
                 </li>
                 <li>
                     <p><b>What's new/unique/innovative about what you're making?</b></p>
-                    <textarea size="100" data-component="textbox" name="innovm" placeholder="Enter text here" required></textarea>
+                    <textarea size="100" data-component="textbox" name="innovm" placeholder="Enter text here"
+                        required></textarea>
                 </li>
                 <li>
                     <p><b>Describe your product's features and it's functionality.</b></p>
-                    <textarea size="100" data-component="textbox" name="prodf" placeholder="Enter text here" required></textarea>
+                    <textarea size="100" data-component="textbox" name="prodf" placeholder="Enter text here"
+                        required></textarea>
                 </li>
                 <li>
                     <p><b>Who will be your customer?</b></p>
-                    <textarea size="100" data-component="textbox" name="custo" placeholder="Enter text here" required></textarea>
+                    <textarea size="100" data-component="textbox" name="custo" placeholder="Enter text here"
+                        required></textarea>
                 </li>
                 <li>
-                    <p><b>Are similiar products/solutions already available? If yes, name them and tell us how will your idea/product be different than their's.</b></p>
-                    <textarea size="100" data-component="textbox" name="availp" placeholder="Enter text here" required></textarea>
+                    <p><b>Are similiar products/solutions already available? If yes, name them and tell us how will your
+                            idea/product be different than their's.</b></p>
+                    <textarea size="100" data-component="textbox" name="availp" placeholder="Enter text here"
+                        required></textarea>
                 </li>
                 <li>
                     <p><b>How can your idea be converted to a business? (What is your vision?)</b></p>
-                    <textarea size="100" data-component="textbox" name="busic" placeholder="Enter text here" required></textarea>
+                    <textarea size="100" data-component="textbox" name="busic" placeholder="Enter text here"
+                        required></textarea>
                 </li>
                 <li>
                     <p><b>Name of your Project/Product/Idea:</b>
-                    <select name="prodname" id="productname" onchange="specifyhidden(value);" title="Product Domain" required>
-                        <option value="1">Software - Front End</option>
-                        <option value="2">Software - BackEnd</option>
-                        <option value="3">Software - AI/ML</option>
-                        <option value="4">Software - Data Analytics</option>
-                        <option value="5">Software - AR</option>
-                        <option value="6">Software - VR</option>
-                        <option value="7">Software - XR</option>
-                        <option value="8">Software - Blockchain/Distributed Ledger</option>
-                        <option value="9">Software - Fintech</option>
-                        <option value="10">Other</option>
-                    </select>
+                        <select name="prodname" id="productname" onchange="specifyhidden(value);" title="Product Domain"
+                            required>
+                            <option value="1">Software - Front End</option>
+                            <option value="2">Software - BackEnd</option>
+                            <option value="3">Software - AI/ML</option>
+                            <option value="4">Software - Data Analytics</option>
+                            <option value="5">Software - AR</option>
+                            <option value="6">Software - VR</option>
+                            <option value="7">Software - XR</option>
+                            <option value="8">Software - Blockchain/Distributed Ledger</option>
+                            <option value="9">Software - Fintech</option>
+                            <option value="10">Other</option>
+                        </select>
                     </p>
                 </li>
             </ol>
@@ -149,7 +163,8 @@
             <ol>
                 <li>
                     <p><b>Name of your team members (Including you)</p></b>
-                    <input type="text" size="100" data-component="textbox" name="businessidea" placeholder="Enter text here" required>
+                    <input type="text" size="100" data-component="textbox" name="businessidea"
+                        placeholder="Enter text here" required>
                 </li>
             </ol>
 
@@ -174,16 +189,22 @@
                         <input type="hidden" name="project_id" id="modal_project_id_input">
 
                         &nbsp;&nbsp;&nbsp;<label>Name</label>
-                        <input type="text" size=" 25" data-component="textbox" name="memnameone" placeholder="Enter your name" required><br>
+                        <input type="text" size=" 25" data-component="textbox" name="memnameone"
+                            placeholder="Enter your name" required><br>
 
                         &nbsp;&nbsp;&nbsp;<label>Contact Number</label>
-                        <input type="text" size=" 25" id="memberdetails-contacts" data-component="textbox" name="memcontone" oninput="validateContacts(event)" placeholder="Enter a 10 digit contact number" maxlength="10" pattern="[0-9]{10}" required><br>
+                        <input type="text" size=" 25" id="memberdetails-contacts" data-component="textbox"
+                            name="memcontone" oninput="validateContacts(event)"
+                            placeholder="Enter a 10 digit contact number" maxlength="10" pattern="[0-9]{10}"
+                            required><br>
 
                         &nbsp;&nbsp;&nbsp;<label>Email</label>
-                        <input type="text" size=" 25" data-component="textbox" name="memmailone" placeholder="Enter your E-mail" required><br>
+                        <input type="text" size=" 25" data-component="textbox" name="memmailone"
+                            placeholder="Enter your E-mail" required><br>
 
                         &nbsp;&nbsp;&nbsp;<label>Date of Birth</label>
-                        <input type="date" size=" 25" data-component="textbox" placeholder="DD/MM/YY" name="memdobone" required><br>
+                        <input type="date" size=" 25" data-component="textbox" placeholder="DD/MM/YY" name="memdobone"
+                            required><br>
 
                         &nbsp;&nbsp;&nbsp;<label>Gender</label>
                         <select name="memgenone" id="gender-form-memberone" title="Gender details for members" required>
@@ -193,13 +214,16 @@
                         </select><br>
 
                         &nbsp;&nbsp;&nbsp;<label>TSIP department</label>
-                        <input type="text" size=" 25" data-component="textbox" name="memdeptone" placeholder="Enter your department" required><br>
+                        <input type="text" size=" 25" data-component="textbox" name="memdeptone"
+                            placeholder="Enter your department" required><br>
 
                         &nbsp;&nbsp;&nbsp;<label>Role in the team</label>
-                        <input type="text" size=" 25" data-component="textbox" name="memroleone" placeholder="Enter your role" required><br>
+                        <input type="text" size=" 25" data-component="textbox" name="memroleone"
+                            placeholder="Enter your role" required><br>
 
                         &nbsp;&nbsp;&nbsp;<label>Core Competency</label>
-                        <input type="text" size=" 25" data-component="textbox" name="memcoreone" placeholder="Enter text here" required><br>
+                        <input type="text" size=" 25" data-component="textbox" name="memcoreone"
+                            placeholder="Enter text here" required><br>
                         <input type="submit" onclick="submitmemberdetails()" value="Save" id="form-one">
                     </form>
                 </div>
@@ -222,6 +246,35 @@
 
                 </tbody>
             </table>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="file" id="document-input" accept=".pdf, .doc, .docx">
+            <button type="button" id="upload-button">Upload</button>
+            <script>
+                $(document).ready(function () {
+                    $('#upload-button').click(function () {
+                        var fileInput = $('#document-input')[0];
+                        var file = fileInput.files[0];
+
+                        var formData = new FormData();
+                        formData.append('document', file);
+
+                        $.ajax({
+                            type: 'POST',
+                            url: 'upload-document/',  // Update the URL according to your Django view URL
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function (response) {
+                                alert('Document uploaded successfully!');
+                            },
+                            error: function (xhr, status, error) {
+                                alert('Error uploading document.');
+                            }
+                        });
+                    });
+                });
+
+            </script>
         </section>
     </form>
 
@@ -230,9 +283,9 @@
     </div>
 
     <input type="checkbox" name="checkbkx" id="mycheck" title="Check me" onclick="myfunc()">
-   <strong><label id="terms-and-conditions">
-        Terms and conditions of the competitions to be entered here by TSIP core team
-    </label></strong>
+    <strong><label id="terms-and-conditions">
+            Terms and conditions of the competitions to be entered here by TSIP core team
+        </label></strong>
     <br><br><br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -262,4 +315,5 @@
         document.getElementById("time-span").innerHTML = time;
     </script>
 </body>
+
 </html>
