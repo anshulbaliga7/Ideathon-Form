@@ -26,5 +26,15 @@ urlpatterns = [
     path('view_form_users', views.view_form_users, name='view_form_users'),
     path('formcheck', views.formcheck, name='formcheck'),
 
+    path('upload-document/', views.upload_document, name='upload-document'),
+    path('submit_form_login/upload-document/', views.upload_document, name='upload-document'),
+    path('submit_form_login/submission', views.personal_inf, name='personal_inf'),
+    path('new_user/upload-document/', views.upload_document, name='upload-document'),
+    path('new_user/submit_form_login/submission', views.personal_inf, name='personal_inf'),
+    path('new_user/logincheck/submission', views.personal_inf, name='personal_inf'),
+
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
