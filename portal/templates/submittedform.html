@@ -63,6 +63,21 @@
                 {% endfor %}
             </tbody>
         </table>
+        <h2>Document Upload if any</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Document</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for files in files_data %}
+                <tr>
+                    <td><a href="{{ files.files.url }}">{{ files.files }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     <div class="text-center">
         <a href="{% url 'submit_form_login' %}">Go back to login page.</a>
