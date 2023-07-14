@@ -6,7 +6,9 @@ from django.http import HttpResponseBadRequest
 from .models import persoinfo
 from .models import memberdets
 from .models import newuserdets
+from .models import documentupload
 import random
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
 
 
@@ -202,6 +204,7 @@ def submitted_form(request, form_SL):
     try:
         member_data = memberdets.objects.filter(project_id=form_SL)
         form_data = persoinfo.objects.get(SL=form_SL)
+        document_data = documentupload.objects.filter(SL=form_SL)
     except (memberdets.DoesNotExist, persoinfo.DoesNotExist):
         return HttpResponse('Form not found.')
 
@@ -240,7 +243,8 @@ def submitted_form(request, form_SL):
 
     context = {
         'member_data': member_data_list,
-        'form_data': form_data_dict
+        'form_data': form_data_dict,
+        'files_data': document_data
     }
     return render(request, 'submittedform.html', context)
 
@@ -266,6 +270,7 @@ def formcheck(request):
             try:
                 member_data = memberdets.objects.filter(project_id=sl_value)
                 form_data = persoinfo.objects.get(SL=sl_value)
+                document_data = documentupload.objects.filter(SL=sl_value)
             except (memberdets.DoesNotExist, persoinfo.DoesNotExist):
                 return HttpResponse('Form not found.')
             form_data_dict = {
@@ -303,11 +308,32 @@ def formcheck(request):
 
             context = {
                 'member_data': member_data_list,
-                'form_data': form_data_dict
+                'form_data': form_data_dict,
+                'files_data': document_data
             }
             return render(request, 'userviewform.html', context)
             
         else:
             error_message = 'Passwords entered do not match.'
             return render(request, 'viewformuser.html', {'error_message': error_message})
+
+
+
+@csrf_exempt
+def upload_document(request):
+    if request.method == 'POST' and request.FILES.get('document'):
+        document = request.FILES['document']
+
+        # Assuming you have the SL value available in the request session
+        sl_value = request.session.get('sl_value')
+
+        # Create a new instance of the documentupload model
+        doc_upload = documentupload(SL=sl_value, files=document)
+        doc_upload.save()
+
+        # Return a response indicating successful upload
+        return HttpResponse('Document uploaded successfully!')
+    else:
+        # Return an error response if no document was received
+        return HttpResponseBadRequest('No document found.')
 
