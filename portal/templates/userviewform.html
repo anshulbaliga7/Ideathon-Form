@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <div>
         <h1>Your Submitted Form Data</h1>
         <h2>Form Details (Personal info)</h2>
@@ -57,6 +56,21 @@
                     <td>{{ member.Department }}</td>
                     <td>{{ member.Role }}</td>
                     <td>{{ member.Competency }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Document Upload if any</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Document</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for files in files_data %}
+                <tr>
+                    <td><a href="{{ files.files.url }}">{{ files.files }}</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
