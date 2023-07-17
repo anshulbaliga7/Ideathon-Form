@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-fdui-)9(a(pga!r!q=^dn1j)4ew+i&(@*6qsm3+^^m_zz&xy=l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','192.168.56.1']
+ALLOWED_HOSTS = ['127.0.0.1','192.168.56.1','localhost']
 
 
 # Application definition
@@ -79,13 +79,13 @@ WSGI_APPLICATION = 'projectapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tsipinternship',
+        'NAME': 'tsipbackendschema',
         'HOST': '192.168.56.1',
         'PORT': '3306',
-        'USER': 'tsipinternr',
-        'PASSWORD': 'tsip123'
+        'USER': 'tsipuserform',
+        'PASSWORD': 'tsip123!@#'
     }
-}
+} 
 
 
 # Password validation

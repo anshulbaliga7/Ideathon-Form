@@ -44,7 +44,7 @@ class newuserdets(models.Model):
     emailaddress=models.CharField(max_length=200, null=True, default='')
     password=models.TextField(null=True, default='')
 
-class documentupload(models.Model):
+class documentuploadss(models.Model):
     id=models.AutoField(primary_key=True)
     SL=models.IntegerField(null=True)
     files=models.FileField(null=True, default='')

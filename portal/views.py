@@ -6,7 +6,7 @@ from django.http import HttpResponseBadRequest
 from .models import persoinfo
 from .models import memberdets
 from .models import newuserdets
-from .models import documentupload
+from .models import documentuploadss
 import random
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
@@ -204,7 +204,7 @@ def submitted_form(request, form_SL):
     try:
         member_data = memberdets.objects.filter(project_id=form_SL)
         form_data = persoinfo.objects.get(SL=form_SL)
-        document_data = documentupload.objects.filter(SL=form_SL)
+        document_data = documentuploadss.objects.filter(SL=form_SL)
     except (memberdets.DoesNotExist, persoinfo.DoesNotExist):
         return HttpResponse('Form not found.')
 
@@ -270,7 +270,7 @@ def formcheck(request):
             try:
                 member_data = memberdets.objects.filter(project_id=sl_value)
                 form_data = persoinfo.objects.get(SL=sl_value)
-                document_data = documentupload.objects.filter(SL=sl_value)
+                document_data = documentuploadss.objects.filter(SL=sl_value)
             except (memberdets.DoesNotExist, persoinfo.DoesNotExist):
                 return HttpResponse('Form not found.')
             form_data_dict = {
@@ -328,7 +328,7 @@ def upload_document(request):
         sl_value = request.session.get('sl_value')
 
         # Create a new instance of the documentupload model
-        doc_upload = documentupload(SL=sl_value, files=document)
+        doc_upload = documentuploadss(SL=sl_value, files=document)
         doc_upload.save()
 
         # Return a response indicating successful upload
